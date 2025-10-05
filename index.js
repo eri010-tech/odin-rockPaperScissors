@@ -1,7 +1,5 @@
 /* write a function that randonly returns
 "rock", "paper", or "scissors". */
-
-
 function getComputerChoice() {
   const randomNumber = Math.random();
   
