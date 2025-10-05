@@ -3,15 +3,19 @@
 
 
 function getComputerChoice() {
-  randomNumber = Math.random();
-
+  const randomNumber = Math.random();
+  
   if (randomNumber >= 0 && randomNumber < 1/3) {
     getComputerChoice = 'scissors';
   } else if (randomNumber >= 1/3 && randomNumber < 2/3) {
     getComputerChoice = 'rock';
   } else if (randomNumber >= 2/3 && randomNumber < 1)
     getComputerChoice = 'paper';
+  
+  return getComputerChoice;
 }
 console.log(getComputerChoice());
+
+
    
 
