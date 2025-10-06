@@ -35,9 +35,10 @@ let humanScore = 0;
 let computerScore = 0;
 
 //step 1: create the logic for who wins and looses  
-//try to condense the code 
+/* try to condense the code because you need two perspectives: the signs 
+that win and the signs that loose. maybe try nesting */
 //work on case sensitivity (make humanChoice insensitive)
-//increment the score based on the winner
+//increment the score based on the winner. might try using a loop for 5 rounds 
 
 function playRound (humanChoice, computerChoice){
   if (humanChoice === 'paper' && computerChoice === 'rock') {
@@ -57,6 +58,7 @@ function playRound (humanChoice, computerChoice){
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
+/* current issue: getHumanChoice and getComputerChoice are receiving a type error:
+"not a function".this is likely due to scope. I will need to resolve it */
 
 console.log(playRound(humanSelection, computerSelection));
-
