@@ -10,7 +10,6 @@ function getComputerChoice() {
   } else if (randomNumber >= 2/3 && randomNumber < 1) {
     getComputerChoice = 'paper';
   }
-  
   return getComputerChoice;
 }
 console.log(getComputerChoice());
@@ -18,7 +17,7 @@ console.log(getComputerChoice());
 /* write the logic to get the human choice.
 Write a function that takes the user choice 
 and returns it */
-function getHumanChoice (){
+function getHumanChoice () {
   let humanChoice = window.prompt('please pick: rock, paper, or scissors');
 
   if (humanChoice === 'rock') {
@@ -31,5 +30,33 @@ function getHumanChoice (){
   return getHumanChoice;
 }
 console.log(getHumanChoice());
-    
+
+let humanScore = 0;
+let computerScore = 0;
+
+//step 1: create the logic for who wins and looses  
+//try to condense the code 
+//work on case sensitivity (make humanChoice insensitive)
+//increment the score based on the winner
+
+function playRound (humanChoice, computerChoice){
+  if (humanChoice === 'paper' && computerChoice === 'rock') {
+    console.log("You win! Paper beats Rock.");
+  } else if (humanChoice === 'scissors' && computerChoice === 'paper'){
+    console.log("You win! Scissors beats Paper.");
+  } else if(humanChoice === 'rock' && computerChoice === 'scissors'){
+    console.log("You win! Rock beats Scissors.")
+  } else if (humanChoice === 'rock' && computerChoice === 'rock'){
+    console.log("Tie!");
+  } else if(humanChoice === 'paper' && computerChoice === 'paper'){
+    console.log("Tie!");
+  } else if (humanChoice === 'scissors' && computerChoice === 'scissors'){
+    console.log("Tie!")
+  } 
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+console.log(playRound(humanSelection, computerSelection));
 
