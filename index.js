@@ -14,41 +14,33 @@ function getComputerChoice() {
   }
   return computerMove;
 }
-console.log(getComputerChoice( ));
 
 /* write the logic to get the human choice.
 Write a function that takes the user choice 
 and returns it */
 
-let humanOption = window.prompt('please pick: rock, paper, or scissors');
-
 function getHumanChoice () {
+  let humanOption = window.prompt('please pick: rock, paper, or scissors');
   let userChoice = ' ';
 
-  if (humanOption === 'rock') {
+  if (humanOption.toLowerCase() === 'rock') {
     userChoice = 'rock';
-  } else if (humanOption === 'paper') {
+  } else if (humanOption.toLowerCase() === 'paper') {
     userChoice = 'paper';
-  } else if (humanOption === 'scissors') {
+  } else if (humanOption.toLowerCase() === 'scissors') {
     userChoice = 'scissors';
   }
    return userChoice;
 }
-/* console.log(typeof getHumanChoice()); This helped me discovery that my getHumanChoice 
-function is being treated as a string */
-
-console.log(getHumanChoice());
-
-//let humanScore = 0;
-//let computerScore = 0;
 
 //step 1: create the logic for who wins and looses  
-/* try to condense the code because you need two perspectives: the signs 
-that win and the signs that loose. maybe try nesting */
-//work on case sensitivity (make humanChoice insensitive)
+// try to condense the code -- maybe try nesting 
 //increment the score based on the winner. might try using a loop for 5 rounds 
 
 function playRound (humanChoice, computerChoice){
+
+  let result = '';
+
   if(humanChoice === 'rock'){
     if(computerChoice === 'rock'){
       result = 'Tie.';
@@ -65,7 +57,7 @@ function playRound (humanChoice, computerChoice){
     } else if (computerChoice === 'scissors'){
       result = 'You lose.';
     }
-  } else if (humanChoice === 'scissor'){
+  } else if (humanChoice === 'scissors'){
     if (computerChoice === 'rock'){
       result = 'You lose.';
     } else if (computerChoice === 'paper'){
@@ -74,21 +66,21 @@ function playRound (humanChoice, computerChoice){
       result = 'Tie.';
     }
   }
+  return result;
 } 
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+console.log(playRound(humanSelection, computerSelection));
 
-console.log(typeof getHumanChoice());
-console.log(typeof getComputerChoice());
-//my functions are currently strings :( 
-/* current problem: 
-I need to figure out a way to keep my functions as functions and not strings */
+console.log(humanSelection);
+console.log(computerSelection);
+
+let humanScore = 0;
+let computerScore = 0;
 
 
-/* current issue: getHumanChoice and getComputerChoice are receiving a type error:
-"not a function".this is likely due to scope. I will need to resolve it */
+
 
 
