@@ -36,6 +36,8 @@ function getHumanChoice () {
 //step 1: create the logic for who wins and looses  
 // try to condense the code -- maybe try nesting 
 //increment the score based on the winner. might try using a loop for 5 rounds 
+let humanScore = 0;
+let computerScore = 0;
 
 function playRound (humanChoice, computerChoice){
 
@@ -66,6 +68,13 @@ function playRound (humanChoice, computerChoice){
       result = 'Tie.';
     }
   }
+
+  if (result === 'You Win!') {
+    humanScore = humanScore + 1;
+  } else if (result === 'You lose.'){ //want to make add a label for each score???
+    computerScore = computerScore + 1;
+  }
+
   return result;
 } 
 
@@ -76,9 +85,10 @@ console.log(playRound(humanSelection, computerSelection));
 
 console.log(humanSelection);
 console.log(computerSelection);
+console.log(humanScore);
+console.log(computerScore);
 
-let humanScore = 0;
-let computerScore = 0;
+
 
 
 
