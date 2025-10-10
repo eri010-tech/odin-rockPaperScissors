@@ -36,66 +36,68 @@ function getHumanChoice () {
 //step 1: create the logic for who wins and looses  
 // try to condense the code -- maybe try nesting 
 //increment the score based on the winner. might try using a loop for 5 rounds 
-  let humanScore = 0;
-  let computerScore = 0;
 
 function playRound (humanChoice, computerChoice){
 
-  let result = '';
-   
   if(humanChoice === 'rock'){
     if(computerChoice === 'rock'){
-      result = 'Tie.';
+      return 'Tie.';
     } else if (computerChoice === 'paper'){
-      result = 'You lose.';
+      computerScore++;
+      return 'You lose! Paper beats Rock';
     } else if (computerChoice === 'scissors'){
-      result = 'You Win!';
+      userScore++;
+      return 'You Win! Rock beats Scissors';
     }
   } else if (humanChoice === 'paper'){
     if(computerChoice === 'rock'){
-      result = 'You Win!';
+      userScore++;
+      return 'You Win! Paper beats Rock';
     } else if (computerChoice === 'paper'){
-      result = 'Tie.';
+      return 'Tie.';
     } else if (computerChoice === 'scissors'){
-      result = 'You lose.';
+      computerScore++;
+      return 'You lose. Scissors beats Paper';
     }
   } else if (humanChoice === 'scissors'){
     if (computerChoice === 'rock'){
-      result = 'You lose.';
+      computerScore++;
+      return 'You lose. Rock beats Scissors';
     } else if (computerChoice === 'paper'){
-      result = 'You Win!';
+      userScore++;
+      return 'You Win! Scissors beats Paper';
     } else if (computerChoice === 'scissors'){
-      result = 'Tie.';
+      return 'Tie.';
     }
   }
-
-      if (result === 'You Win!') {
-          humanScore = humanScore + 1;
-        } else if (result === 'You lose.'){ 
-          computerScore = computerScore + 1;
-        }
-  return result;
 } 
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-console.log(playRound(humanSelection, computerSelection));
+let userScore = parseInt(0);
+let computerScore = parseInt(0);
 
-console.log(humanSelection);
-console.log(computerSelection);
-console.log(humanScore);
-console.log(computerScore);
+//const humanSelection = getHumanChoice();
+//const computerSelection = getComputerChoice();
+//console.log(playRound(humanSelection, computerSelection));
 
+//console.log(humanSelection);
+//console.log(computerSelection);
+//console.log(userScore);
+//console.log(computerScore);
 
-
-
-
-
-
-
-
-
-
-
-
-
+function playGame(){
+  for (let i = 0; i < 5; i++ ){
+    let humanSelection = getHumanChoice();
+    let computerSelection = getComputerChoice();
+    console.log(playRound(humanSelection, computerSelection));
+    alert(`The computer picked: ${computerSelection}`);
+    console.log("Your score = " + userScore);
+    console.log("Computer's score = " + computerScore);
+  }
+  if (userScore > computerScore){
+    console.log(`You Won! Your final score was: ${userScore}/5`);
+  } else if(computerScore > userScore){
+    console.log(`You lost. Your final score was: ${userScore}/5. 
+    Better luck next time!`);
+  }
+}
+playGame();
