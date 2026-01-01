@@ -1,45 +1,11 @@
-/* write a function that randonly returns
-"rock", "paper", or "scissors". */
-
-function getComputerChoice() {
-  const randomNumber = Math.random();
-  let computerMove = ' ';
-  
-  if (randomNumber >= 0 && randomNumber < 1/3) {
-    computerMove = 'rock';
-  } else if (randomNumber >= 1/3 && randomNumber < 2/3) {
-    computerMove = 'paper';
-  } else if (randomNumber >= 2/3 && randomNumber < 1) {
-    computerMove = 'scissors';
-  }
-  return computerMove;
-}
-
-/* write the logic to get the human choice.
-Write a function that takes the user choice 
-and returns it */
-
-function getHumanChoice () {
-  let humanOption = window.prompt('please pick: rock, paper, or scissors');
-  let userChoice = ' ';
-
-  if (humanOption.toLowerCase() === 'rock') {
-    userChoice = 'rock';
-  } else if (humanOption.toLowerCase() === 'paper') {
-    userChoice = 'paper';
-  } else if (humanOption.toLowerCase() === 'scissors') {
-    userChoice = 'scissors';
-  }
-   return userChoice;
-}
 
 //step 1: create the logic for who wins and looses  
 // try to condense the code -- maybe try nesting 
 //increment the score based on the winner. might try using a loop for 5 rounds 
 
-function playRound (humanChoice, computerChoice){
+function playRound (playerChoice, computerChoice){
 
-  if(humanChoice === 'rock'){
+  if(playerChoice === 'rock'){
     if(computerChoice === 'rock'){
       return 'Tie.';
     } else if (computerChoice === 'paper'){
@@ -49,7 +15,7 @@ function playRound (humanChoice, computerChoice){
       userScore++;
       return 'You Win! Rock beats Scissors';
     }
-  } else if (humanChoice === 'paper'){
+  } else if (playerChoice === 'paper'){
     if(computerChoice === 'rock'){
       userScore++;
       return 'You Win! Paper beats Rock';
@@ -59,7 +25,7 @@ function playRound (humanChoice, computerChoice){
       computerScore++;
       return 'You lose. Scissors beats Paper';
     }
-  } else if (humanChoice === 'scissors'){
+  } else if (playerChoice === 'scissors'){
     if (computerChoice === 'rock'){
       computerScore++;
       return 'You lose. Rock beats Scissors';
@@ -72,8 +38,8 @@ function playRound (humanChoice, computerChoice){
   }
 } 
 
-let userScore = parseInt(0);
-let computerScore = parseInt(0);
+//let userScore = parseInt(0);
+//let computerScore = parseInt(0);
 
 //const humanSelection = getHumanChoice();
 //const computerSelection = getComputerChoice();
@@ -83,7 +49,7 @@ let computerScore = parseInt(0);
 //console.log(computerSelection);
 //console.log(userScore);
 //console.log(computerScore);
-
+/*
 function playGame(){
   for (let i = 0; i < 5; i++ ){
     let humanSelection = getHumanChoice();
@@ -101,3 +67,53 @@ function playGame(){
   }
 }
 playGame();
+*/
+
+
+// revisiting project //
+
+// creating variables for each button
+const buttons = document.querySelectorAll("button"); 
+const btnContainer = document.querySelectorAll("#btn-container");
+const humanScoreDisplay = document.querySelector("#human-score");
+const userPicked = document.querySelector("#user-picked");
+const computerPicked = document.querySelector("#computer-picked");
+const computerScoreDisplay = document.querySelector("#computer-score");
+const winner = document.querySelector("#winner"); 
+
+
+// loop through the btnContainer and attach an eventListener to each button
+
+btnContainer.forEach((button) => {
+  button.addEventListener('click', (e) => {
+
+     let humanChoice = e.target.textContent; 
+     userPicked.textContent = humanChoice.toLowerCase(); 
+
+    
+    let computerMove = computerChoice(); 
+    computerPicked.textContent = computerMove; 
+
+  });
+});
+
+function computerChoice() {
+    const randomNumber = Math.random();
+    let computerMove = ' ';
+  
+    if (randomNumber >= 0 && randomNumber < 1/3) {
+      computerMove = 'rock';
+    } else if (randomNumber >= 1/3 && randomNumber < 2/3) {
+      computerMove = 'paper';
+    } else if (randomNumber >= 2/3 && randomNumber < 1) {
+      computerMove = 'scissors';
+    }
+    return computerMove;
+};
+
+/* When a button is clicked, a comparison should be made 
+between the user's choice and the computer's choice.
+Once the comparison has been made, it should 
+continue for 4 more rounds. Finally, the score
+should be printed */ 
+
