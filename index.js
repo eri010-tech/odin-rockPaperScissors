@@ -27,8 +27,7 @@ btnContainer.forEach((button) => {
    
     updateScore(roundWinner); 
 
-   
-     
+
    //next I need make it so that a game end after one person 
    // gets 5 points. After, maybe create a div that says: game over.
    // then I want the score board to restart over. 
@@ -76,7 +75,7 @@ function playRound (playerSelection, computerSelection){
 
 
   let computerScore = 0; 
-  let humanScore = 0; 
+  let humanScore = 0;  
 
 function updateScore (currentRoundWinner){
   if(currentRoundWinner === "player"){
@@ -86,8 +85,15 @@ function updateScore (currentRoundWinner){
   } 
   yourScore.textContent = humanScore;
   opponentScore.textContent = computerScore; 
+
+  if(computerScore === 5){
+    winner.textContent = "Computer";
+  } else if (humanScore === 5){
+    winner.textContent = "Player"; 
+  }
 };
  
+
 
 
 
