@@ -1,54 +1,27 @@
 
-//step 1: create the logic for who wins and looses  
-// try to condense the code -- maybe try nesting 
-//increment the score based on the winner. might try using a loop for 5 rounds 
+// Revised playRound using solution from Stack Overflow
 
-function playRound (playerChoice, computerChoice){
+function playRound (playerSelection, computerSelection){
 
-  if(playerChoice === 'rock'){
-    if(computerChoice === 'rock'){
-      return 'Tie.';
-    } else if (computerChoice === 'paper'){
-      computerScore++;
-      return 'You lose! Paper beats Rock';
-    } else if (computerChoice === 'scissors'){
-      userScore++;
-      return 'You Win! Rock beats Scissors';
-    }
-  } else if (playerChoice === 'paper'){
-    if(computerChoice === 'rock'){
-      userScore++;
-      return 'You Win! Paper beats Rock';
-    } else if (computerChoice === 'paper'){
-      return 'Tie.';
-    } else if (computerChoice === 'scissors'){
-      computerScore++;
-      return 'You lose. Scissors beats Paper';
-    }
-  } else if (playerChoice === 'scissors'){
-    if (computerChoice === 'rock'){
-      computerScore++;
-      return 'You lose. Rock beats Scissors';
-    } else if (computerChoice === 'paper'){
-      userScore++;
-      return 'You Win! Scissors beats Paper';
-    } else if (computerChoice === 'scissors'){
-      return 'Tie.';
-    }
+  let roundWinner = " "; 
+
+  if(playerSelection === computerSelection) {
+    roundWinner = "tie"; 
   }
-} 
+  else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "scissors" && computerSelection === "paper") ||
+    (playerSelection === "paper" && computerSelection === "rock")
+  ) {
+    roundWinner = "player"; 
+  }
+  else {
+    roundWinner = "computer"; 
+  }
+    
+  return roundWinner; 
+}; 
 
-//let userScore = parseInt(0);
-//let computerScore = parseInt(0);
-
-//const humanSelection = getHumanChoice();
-//const computerSelection = getComputerChoice();
-//console.log(playRound(humanSelection, computerSelection));
-
-//console.log(humanSelection);
-//console.log(computerSelection);
-//console.log(userScore);
-//console.log(computerScore);
 /*
 function playGame(){
   for (let i = 0; i < 5; i++ ){
@@ -70,7 +43,7 @@ playGame();
 */
 
 
-// revisiting project //
+// ####### revisiting project ######### //
 
 // creating variables for each button
 const buttons = document.querySelectorAll("button"); 
@@ -88,12 +61,15 @@ btnContainer.forEach((button) => {
   button.addEventListener('click', (e) => {
 
      let humanChoice = e.target.textContent; 
-     userPicked.textContent = humanChoice.toLowerCase(); 
-
+     userPicked.textContent = humanChoice; 
     
     let computerMove = computerChoice(); 
     computerPicked.textContent = computerMove; 
 
+
+   let roundWinner = playRound(humanChoice, computerMove); 
+   console.log(roundWinner); // says who won the round 
+   
   });
 });
 
