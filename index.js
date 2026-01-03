@@ -9,6 +9,7 @@ const scoreContainer = document.querySelector("#score-container")
 const winner = document.querySelector("#winner"); 
 let yourScore = document.querySelector("#player-score"); 
 let opponentScore = document.querySelector("#computer-score");
+let resetBtn = document.querySelector("#reset-game"); 
 
 
 // loop through the btnContainer and attach an eventListener to each button
@@ -87,15 +88,34 @@ function updateScore (currentRoundWinner){
   opponentScore.textContent = computerScore; 
 
   if(computerScore === 5){
-    winner.textContent = "Computer";
+    winner.textContent = `Computer won with a score of ${computerScore} points. 
+    You scored ${humanScore} point(s). Please press the Reset 
+    Button to start a new gam :)`;  
   } else if (humanScore === 5){
-    winner.textContent = "Player"; 
-  }
+    winner.textContent = `You won with a score of ${humanScore} points. 
+    The Computer scored ${computerScore} point(s). Please press the Reset 
+    Button to start a new gam :)`; 
+  } 
 };
  
+resetBtn.addEventListener("click", () => {
+  yourScore.textContent = 0;
+  opponentScore.textContent = 0;
+  humanScore = 0; 
+  computerScore = 0; 
+  userPicked.textContent = "";
+  computerPicked.textContent = ""; 
+  winner.textContent = "";
+});
 
 
-
+/* new task: after 5 points is earned
+I want the each of the three buttons, w
+when clicked again to essentially behave
+like my reset button, and start the game
+over. Then, when the user tries to click 
+one of the three buttons again, it allows
+them to play a new Game */ 
 
 
  
