@@ -28,7 +28,6 @@ btnContainer.forEach((button) => {
    
     updateScore(roundWinner); 
 
-
    //next I need make it so that a game end after one person 
    // gets 5 points. After, maybe create a div that says: game over.
    // then I want the score board to restart over. 
@@ -117,8 +116,6 @@ over. Then, when the user tries to click
 one of the three buttons again, it allows
 them to play a new Game */ 
 
-
- 
 
 
 
