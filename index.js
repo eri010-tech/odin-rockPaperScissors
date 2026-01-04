@@ -14,25 +14,21 @@ let resetBtn = document.querySelector("#reset-game");
 
 // loop through the btnContainer and attach an eventListener to each button
 
-btnContainer.forEach((button) => {
-  button.addEventListener('click', (e) => {
+btnContainer.forEach((button) => button.addEventListener('click', playGame)); 
+  
+  function playGame(e) {
 
-     let humanChoice = e.target.textContent; 
+    let humanChoice = e.target.textContent; 
      userPicked.textContent = humanChoice; 
     
     let computerMove = computerChoice(); 
     computerPicked.textContent = computerMove; 
 
-
     let roundWinner = playRound(humanChoice, computerMove); 
    
     updateScore(roundWinner); 
+  }; 
 
-   //next I need make it so that a game end after one person 
-   // gets 5 points. After, maybe create a div that says: game over.
-   // then I want the score board to restart over. 
-  });
-});
 
 function computerChoice() {
     const randomNumber = Math.random();
