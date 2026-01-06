@@ -1,24 +1,24 @@
 // ####### revisiting project ######### //
 
 // creating variables for each button
-const buttons = document.querySelectorAll("button"); 
-const btnContainer = document.querySelectorAll("#btn-container");
-const userPicked = document.querySelector("#user-picked");
+const buttons = document.querySelectorAll("#rps-button"); 
+//const btnContainer = document.querySelectorAll("#btn-container"); 
+const playerPicked = document.querySelector("#player-picked");
 const computerPicked = document.querySelector("#computer-picked");
 const scoreContainer = document.querySelector("#score-container")
 const winner = document.querySelector("#winner"); 
-let yourScore = document.querySelector("#player-score"); 
+let playerScore = document.querySelector("#player-score"); 
 let opponentScore = document.querySelector("#computer-score");
 let resetBtn = document.querySelector("#reset-game"); 
 
 
 // loop through the btnContainer and attach an eventListener to each button
 
-btnContainer.forEach((button) => button.addEventListener('click', playGame)); 
+buttons.forEach((button) => button.addEventListener('click', playGame)); 
   
   function playGame(e) {
     let humanChoice = e.target.textContent; 
-     userPicked.textContent = humanChoice; 
+     playerPicked.textContent = humanChoice; 
     
     let computerMove = computerChoice(); 
     computerPicked.textContent = computerMove; 
@@ -76,41 +76,30 @@ function updateScore (currentRoundWinner){
   } else if (currentRoundWinner === "computer"){
     computerScore++; 
   } 
-  yourScore.textContent = humanScore;
+  playerScore.textContent = humanScore;
   opponentScore.textContent = computerScore; 
 
   if(computerScore === 5){
-    winner.textContent = `Computer won! Please press the Reset Button 
+    winner.textContent = `Computer won! Please press the Reset button 
     to start a new game.`;  
-    btnContainer.forEach((button) => button.removeEventListener('click', playGame)); 
+    buttons.forEach((button) => button.removeEventListener('click', playGame)); 
   } else if (humanScore === 5){
-    winner.textContent = `You won! Please press the Reset Button to 
+    winner.textContent = `You won! Please press the Reset button to 
     start a new game.`; 
-   btnContainer.forEach((button) => button.removeEventListener('click', playGame)); 
+   buttons.forEach((button) => button.removeEventListener('click', playGame)); 
   } 
 };
  
 resetBtn.addEventListener("click", () => {
-  yourScore.textContent = 0;
+  playerScore.textContent = 0;
   opponentScore.textContent = 0;
   humanScore = 0; 
   computerScore = 0; 
-  userPicked.textContent = "";
+  playerPicked.textContent = "";
   computerPicked.textContent = ""; 
   winner.textContent = "";
-  btnContainer.forEach((button) => button.addEventListener('click', playGame));
+  buttons.forEach((button) => button.addEventListener('click', playGame));
 });
-
-
-
-/* new task: after 5 points is earned
-I want the each of the three buttons, w
-when clicked again to essentially behave
-like my reset button, and start the game
-over. Then, when the user tries to click 
-one of the three buttons again, it allows
-them to play a new Game */ 
-
 
 
 
